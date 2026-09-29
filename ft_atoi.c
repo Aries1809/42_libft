@@ -27,7 +27,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (ft_isdigit(*str))
 	{
 		i = (i * 10) + (*str - '0');
 		str++;

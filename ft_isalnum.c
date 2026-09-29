@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/09/06 00:37:03 by kseltenr         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:29:13 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	unsigned char	a;
-
-	a = c;
-	if ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z'))
-		return (1);
-	if (a >= '0' && a <= '9')
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }
