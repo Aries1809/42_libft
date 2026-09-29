@@ -83,7 +83,7 @@ cd path/to/libft && make
 ```
 - add these flags when compiling the code:
 ```bash
--lft -L path/to/libft.a -I path/to/libft.h
+-lft -L path/to/libft -I path/to/libft
 ```
 
 ## 3. Tester
