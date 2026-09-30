@@ -21,3 +21,25 @@ size_t	ft_strlen(const char *s)
 		len++;
 	return (len);
 }
+
+/*
+TEST MAIN: Remove this block's opening and closing comment markers to run.
+Uncomment one main at a time. From the project directory:
+make
+cc -Wall -Wextra -Werror ft_strlen.c libft.a -o /tmp/ft_strlen_test
+/tmp/ft_strlen_test
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int	main(void)
+{
+	assert(ft_strlen("hello") == 5);
+	assert(ft_strlen("") == 0);
+	assert(ft_strlen("ab\0cd") == 2);
+	puts("ft_strlen: all tests passed");
+	return (0);
+}
+*/

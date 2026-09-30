@@ -16,3 +16,26 @@ int	ft_isalpha(int c)
 {
 	return ((c >= 97 && c <= 122) || (c >= 65 && c <= 90));
 }
+
+/*
+TEST MAIN: Remove this block's opening and closing comment markers to run.
+Uncomment one main at a time. From the project directory:
+make
+cc -Wall -Wextra -Werror ft_isalpha.c libft.a -o /tmp/ft_isalpha_test
+/tmp/ft_isalpha_test
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int	main(void)
+{
+	int c;
+
+	for (c = -1; c <= 256; c++)
+		assert(!!ft_isalpha(c) == ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
+	puts("ft_isalpha: all tests passed");
+	return (0);
+}
+*/

@@ -94,3 +94,4 @@ I used this tester: [libftTester](https://github.com/Tripouille/libftTester)
 Manual pages of the functions, geeksforgeeks.org for understanding concepts better (eg. malloc, linked lists)
 
 AI was used to reformat some code, like replacing spaces with tabs and similar minor norm issues.
+It also was used to add test mains before the peer evualtions.

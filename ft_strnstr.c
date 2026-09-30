@@ -34,3 +34,28 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+
+/*
+TEST MAIN: Remove this block's opening and closing comment markers to run.
+Uncomment one main at a time. From the project directory:
+make
+cc -Wall -Wextra -Werror ft_strnstr.c libft.a -o /tmp/ft_strnstr_test
+/tmp/ft_strnstr_test
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int	main(void)
+{
+	const char *s = "hello world";
+
+	assert(ft_strnstr(s, "world", 11) == s + 6);
+	assert(ft_strnstr(s, "world", 10) == NULL);
+	assert(ft_strnstr(s, "", 0) == s);
+	assert(ft_strnstr(s, "missing", 11) == NULL);
+	puts("ft_strnstr: all tests passed");
+	return (0);
+}
+*/

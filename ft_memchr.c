@@ -27,3 +27,29 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/*
+TEST MAIN: Remove this block's opening and closing comment markers to run.
+Uncomment one main at a time. From the project directory:
+make
+cc -Wall -Wextra -Werror ft_memchr.c libft.a -o /tmp/ft_memchr_test
+/tmp/ft_memchr_test
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int	main(void)
+{
+	const unsigned char buf[] = {'a', 0, 'b', 'a'};
+
+	assert(ft_memchr(buf, 'a', 4) == buf);
+	assert(ft_memchr(buf, 0, 4) == buf + 1);
+	assert(ft_memchr(buf, 'b', 2) == NULL);
+	assert(ft_memchr(buf, 'a', 0) == NULL);
+	assert(ft_memchr(buf, 'a' + 256, 4) == buf);
+	puts("ft_memchr: all tests passed");
+	return (0);
+}
+*/

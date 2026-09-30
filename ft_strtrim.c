@@ -50,3 +50,38 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[i] = '\0';
 	return (str);
 }
+
+/*
+TEST MAIN: Remove this block's opening and closing comment markers to run.
+Uncomment one main at a time. From the project directory:
+make
+cc -Wall -Wextra -Werror ft_strtrim.c libft.a -o /tmp/ft_strtrim_test
+/tmp/ft_strtrim_test
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int	main(void)
+{
+	char *s;
+
+	s = ft_strtrim("  hello  ", " ");
+	assert(s != NULL);
+	assert(strcmp(s, "hello") == 0);
+	free(s);
+
+	s = ft_strtrim("xxx", "x");
+	assert(s != NULL);
+	assert(strcmp(s, "") == 0);
+	free(s);
+
+	s = ft_strtrim("hello", "");
+	assert(s != NULL);
+	assert(strcmp(s, "hello") == 0);
+	free(s);
+	puts("ft_strtrim: all tests passed");
+	return (0);
+}
+*/
