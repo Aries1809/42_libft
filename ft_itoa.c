@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/09/29 11:28:03 by kseltenr        ###   ########.fr        */
+/*   Updated: 2026/10/03 13:15:56 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_intlen(long n)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	if (n <= 0)
@@ -29,9 +29,9 @@ static int	ft_intlen(long n)
 
 char	*ft_itoa(int n)
 {
-	char	*s;
-	long	n1;
-	int		len;
+	char		*s;
+	long long	n1;
+	size_t		len;
 
 	n1 = n;
 	len = ft_intlen(n1);

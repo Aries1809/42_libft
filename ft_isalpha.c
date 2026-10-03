@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/09/30 03:19:17 by kseltenr        ###   ########.fr        */
+/*   Updated: 2026/10/03 13:16:10 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(void)
 	int c;
 
 	for (c = -1; c <= 256; c++)
-		assert(!!ft_isalpha(c) == ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
+		assert(!!ft_isalpha(c) ==
+		((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
 	puts("ft_isalpha: all tests passed");
 	return (0);
 }
