@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/09/06 00:37:03 by kseltenr         ###   ########.fr       */
+/*   Updated: 2026/10/03 11:52:26 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!haystack && len == 0)
+	if (!haystack || !needle || len == 0)
 		return (NULL);
 	if (!needle[0])
 		return ((char *)haystack);
