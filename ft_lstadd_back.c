@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/09/06 00:40:39 by sky             ###   ########.fr        */
+/*   Updated: 2026/10/07 01:59:52 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *n)
 {
+	if (!lst)
+		return ;
 	if (!*lst)
 		*lst = n;
 	else
