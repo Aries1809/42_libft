@@ -1,6 +1,35 @@
-NAME = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                        :::      ::::::::     #
+#    Makefile                                          :+:      :+:    :+:     #
+#                                                    +:+ +:+         +:+       #
+#    By: kseltenr <kseltenr@student.42.fr>         #+#  +:+       +#+          #
+#                                                +#+#+#+#+#+   +#+             #
+#    Created: 2026/10/07 13:47:16 by kseltenr         #+#    #+#               #
+#    Updated: 2026/10/07 13:51:22 by kseltenr        ###   ########.fr         #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+NAME		= libft.a
+
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+CPPFLAGS	= -MMD -MP
+DEBUG		?= 0
+RM			= rm -f
+AR			= ar
+ARFLAGS		= rcs
+
+JOBS		?= $(shell nproc)
+MAKEFLAGS	+= -j $(JOBS) -l $(JOBS)
+
+ifeq ($(DEBUG),1)
+CFLAGS		+= -g3
+CPPFLAGS	+= -DDEBUG=1
+endif
+
+OBJ_DIR		= obj
+SRCS		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
        ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd_back.c \
        ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
        ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_memchr.c \
@@ -8,36 +37,32 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
        ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c \
        ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
        ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
-       ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
+       ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c 
 
-OBJS = ${SRCS:.c=.o}
-CC = cc
-AR = ar
-ARFLAGS = rcs
-CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -MMD -MP
-RM = rm -f
+OBJS		= $(SRCS:%.c=$(OBJ_DIR)/%.o)
+DEPS		= $(OBJS:.o=.d)
 
-all: ${NAME}
+all: $(NAME)
 
-%.o: %.c
-	${CC} ${CFLAGS} ${CPPFLAGS} -c $< -o $@
+$(NAME): $(OBJS)
+	$(RM) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-${NAME}: ${OBJS}
-	${AR} ${ARFLAGS} $@ ${OBJS}
+$(OBJ_DIR)/%.o: %.c Makefile
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	${RM} ${OBJS} ${OBJS:.o=.d}
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
-re: 
-	$(MAKE) fclean 
+re:
+	$(MAKE) fclean
 	$(MAKE) all
 
-reh: re
-
--include ${OBJS:.o=.d}
+-include $(DEPS)
 
 .PHONY: all clean fclean re
+.DEFAULT_GOAL := all
