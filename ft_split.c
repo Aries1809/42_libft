@@ -6,7 +6,7 @@
 /*   By: kseltenr <kseltenr@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 00:37:03 by kseltenr          #+#    #+#             */
-/*   Updated: 2026/10/01 04:45:20 by kseltenr        ###   ########.fr        */
+/*   Updated: 2026/10/08 16:53:39 by kseltenr        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,28 @@ char	**ft_split(char const *s, char c)
 }
 
 /*
-TEST MAIN: Remove this block's opening and closing comment markers to run.
-Uncomment one main at a time. From the project directory:
-make
-cc -Wall -Wextra -Werror ft_split.c libft.a -o /tmp/ft_split_test
-/tmp/ft_split_test
+// TEST MAIN: Remove this block's opening and closing comment markers to run.
+// Uncomment one main at a time. From the project directory:
+// make
+// cc -Wall -Wextra -Werror ft_split.c libft.a -o /tmp/ft_split_test
+// /tmp/ft_split_test
 
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <stdio.h>
 
 int	main(void)
 {
 	char **words;
 	size_t i;
 
+	words = ft_split("Hello", 0);
+	printf("%s\n", words[1]);
+	for (i = 0; words[i]; i++)
+		free(words[i]);
+	free(words);
 	words = ft_split(",,hello,,world,", ',');
 	assert(words != NULL);
 	assert(words[0] && strcmp(words[0], "hello") == 0);
