@@ -10,17 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdarg.h>
 #include <stdint.h>
 #include "ft_printf_bonus.h"
 #include "libft.h"
- 
+
 static int	pf_dispatch(t_spec *sp, va_list *ap)
 {
 	int64_t	n;
 	char	c;
- 
+
 	if (sp->conv == 'c')
 	{
 		c = va_arg(*ap, int);
@@ -41,12 +40,12 @@ static int	pf_dispatch(t_spec *sp, va_list *ap)
 		return (pf_write("%", 1));
 	return (pf_convert_nbr(sp, va_arg(*ap, unsigned int), 0));
 }
- 
+
 static int	pf_print_chunk(const char **fmt, va_list *ap)
 {
 	const char	*start;
 	t_spec		sp;
- 
+
 	start = *fmt;
 	(*fmt)++;
 	if (*start == '%')
@@ -65,13 +64,13 @@ static int	pf_print_chunk(const char **fmt, va_list *ap)
 		(*fmt)++;
 	return (pf_write(start, *fmt - start));
 }
- 
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int32_t	count;
 	int32_t	ret;
- 
+
 	if (!format)
 		return (-1);
 	va_start(ap, format);

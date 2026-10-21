@@ -17,6 +17,7 @@
 # define FLAGS "-0# +"
 
 # include <stdint.h>
+# include <stdio.h>
 
 typedef struct s_spec
 {
@@ -28,6 +29,7 @@ typedef struct s_spec
 	int		width;
 	int		prec;
 	char	conv;
+	FILE	*stream;
 }	t_spec;
 
 int		ft_printf(const char *format, ...);

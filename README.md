@@ -7,7 +7,7 @@ libft is the first project of the 42 core curriculum, in which I had to recreate
 The primary goal of the project is to build an understanding of C programming, pointers, and manual memory management.
 By coding these functions, I compiled my own custom static library (libft.a). This library becomes an essential, personalized toolkit that I will use and expand throughout the rest of the 42 curriculum.
 
-This version of libft also includes my [ft_printf](#ft_printf) and [get_next_line](#get_next_line) projects (both with bonus), so everything can be linked from a single `libft.a`.
+This version of libft also includes my [ft_printf](#ft_printf) and [get_next_line](#get_next_line) projects (both with bonus), plus [ft_fprintf](#ft_fprintf), so everything can be linked from a single `libft.a`.
 
 ## Project structure
 
@@ -15,12 +15,14 @@ This version of libft also includes my [ft_printf](#ft_printf) and [get_next_lin
 libft/
 ├── Makefile
 ├── inc/
-│   ├── libft.h                  # main header, includes the two below
+│   ├── libft.h                  # main header, includes the three below
 │   ├── ft_printf_bonus.h
+│   ├── ft_fprintf.h
 │   └── get_next_line_bonus.h
 └── src/
     ├── libc/                    # original libft functions
     ├── printf/                  # ft_printf
+    ├── fprintf/                 # ft_fprintf
     └── gnl/                     # get_next_line
 ```
 
@@ -94,6 +96,12 @@ libft/
 - [ft_convert_bonus.c](src/printf/ft_convert_bonus.c): turns numbers and strings into their printed form
 - [ft_emit_bonus.c](src/printf/ft_emit_bonus.c): writes the result with padding and prefixes
 
+## ft_fprintf
+
+- [ft_fprintf](src/fprintf/ft_fprintf.c): like `ft_printf`, but writes to the `FILE *` stream given as first argument, like `fprintf` (`ft_fprintf(stderr, "error: %s\n", msg)`), returns the number of characters printed or `-1` on error
+  - same conversions and flags as `ft_printf`, and reuses its parser ([ft_parse_bonus.c](src/printf/ft_parse_bonus.c))
+- [ft_fconvert.c](src/fprintf/ft_fconvert.c) and [ft_femit.c](src/fprintf/ft_femit.c): same as the `ft_printf` versions, but write to the stream stored in `t_spec` (through `fwrite`, so output is buffered like the other stdio functions)
+
 ## get_next_line
 
 - [get_next_line](src/gnl/get_next_line_bonus.c): returns the next line read from a file descriptor (including the `\n`), or `NULL` at end of file or on error
@@ -120,7 +128,7 @@ Other rules: `make clean` (remove object files), `make fclean` (also remove `lib
 
 ## 2. Usage
 
-- include this header in the code (it also gives access to `ft_printf` and `get_next_line`):
+- include this header in the code (it also gives access to `ft_printf`, `ft_fprintf` and `get_next_line`):
 ```c
 #include "libft.h"
 ```
