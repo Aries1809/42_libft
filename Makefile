@@ -27,11 +27,13 @@ LIBC_SRC	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 PRINTF_SRC	= ft_printf_bonus.c ft_convert_bonus.c \
 		ft_emit_bonus.c ft_parse_bonus.c
 FPRINTF_SRC	= ft_fprintf.c ft_fconvert.c ft_femit.c
+DPRINTF_SRC	= ft_dprintf.c ft_dconvert.c ft_demit.c
 GNL_SRC		= get_next_line_bonus.c get_next_line_utils_bonus.c
 
 SRCS		= $(addprefix src/libc/, $(LIBC_SRC)) \
 			  $(addprefix src/printf/, $(PRINTF_SRC)) \
 			  $(addprefix src/fprintf/, $(FPRINTF_SRC)) \
+			  $(addprefix src/dprintf/, $(DPRINTF_SRC)) \
 			  $(addprefix src/gnl/, $(GNL_SRC))
 OBJS		= $(SRCS:src/%.c=obj/%.o)
 
@@ -56,8 +58,12 @@ obj/fprintf/%.o: src/fprintf/%.c inc/ft_fprintf.h inc/ft_printf_bonus.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+obj/dprintf/%.o: src/dprintf/%.c inc/ft_dprintf.h inc/ft_printf_bonus.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 obj/%.o: src/%.c inc/libft.h inc/ft_printf_bonus.h inc/ft_fprintf.h \
-			inc/get_next_line_bonus.h
+			inc/ft_dprintf.h inc/get_next_line_bonus.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 

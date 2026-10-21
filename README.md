@@ -7,7 +7,7 @@ libft is the first project of the 42 core curriculum, in which I had to recreate
 The primary goal of the project is to build an understanding of C programming, pointers, and manual memory management.
 By coding these functions, I compiled my own custom static library (libft.a). This library becomes an essential, personalized toolkit that I will use and expand throughout the rest of the 42 curriculum.
 
-This version of libft also includes my [ft_printf](#ft_printf) and [get_next_line](#get_next_line) projects (both with bonus), plus [ft_fprintf](#ft_fprintf), so everything can be linked from a single `libft.a`.
+This version of libft also includes my [ft_printf](#ft_printf) and [get_next_line](#get_next_line) projects (both with bonus), plus [ft_fprintf](#ft_fprintf) and [ft_dprintf](#ft_dprintf), so everything can be linked from a single `libft.a`.
 
 ## Project structure
 
@@ -15,14 +15,16 @@ This version of libft also includes my [ft_printf](#ft_printf) and [get_next_lin
 libft/
 ├── Makefile
 ├── inc/
-│   ├── libft.h                  # main header, includes the three below
+│   ├── libft.h                  # main header, includes the four below
 │   ├── ft_printf_bonus.h
 │   ├── ft_fprintf.h
+│   ├── ft_dprintf.h
 │   └── get_next_line_bonus.h
 └── src/
     ├── libc/                    # original libft functions
     ├── printf/                  # ft_printf
     ├── fprintf/                 # ft_fprintf
+    ├── dprintf/                 # ft_dprintf
     └── gnl/                     # get_next_line
 ```
 
@@ -102,6 +104,12 @@ libft/
   - same conversions and flags as `ft_printf`, and reuses its parser ([ft_parse_bonus.c](src/printf/ft_parse_bonus.c))
 - [ft_fconvert.c](src/fprintf/ft_fconvert.c) and [ft_femit.c](src/fprintf/ft_femit.c): same as the `ft_printf` versions, but write to the stream stored in `t_spec` (through `fwrite`, so output is buffered like the other stdio functions)
 
+## ft_dprintf
+
+- [ft_dprintf](src/dprintf/ft_dprintf.c): like `ft_printf`, but writes to the file descriptor given as first argument, like `dprintf` (`ft_dprintf(2, "error: %s\n", msg)`), returns the number of characters printed or `-1` on error
+  - same conversions and flags as `ft_printf`, and reuses its parser ([ft_parse_bonus.c](src/printf/ft_parse_bonus.c))
+- [ft_dconvert.c](src/dprintf/ft_dconvert.c) and [ft_demit.c](src/dprintf/ft_demit.c): same as the `ft_printf` versions, but write to the file descriptor stored in `t_spec` (through `write`, so output is unbuffered)
+
 ## get_next_line
 
 - [get_next_line](src/gnl/get_next_line_bonus.c): returns the next line read from a file descriptor (including the `\n`), or `NULL` at end of file or on error
@@ -128,7 +136,7 @@ Other rules: `make clean` (remove object files), `make fclean` (also remove `lib
 
 ## 2. Usage
 
-- include this header in the code (it also gives access to `ft_printf`, `ft_fprintf` and `get_next_line`):
+- include this header in the code (it also gives access to `ft_printf`, `ft_fprintf`, `ft_dprintf` and `get_next_line`):
 ```c
 #include "libft.h"
 ```

@@ -30,6 +30,7 @@ typedef struct s_spec
 	int		prec;
 	char	conv;
 	FILE	*stream;
+	int		fd;
 }	t_spec;
 
 int		ft_printf(const char *format, ...);
